@@ -13,10 +13,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Person {
 
     @Id
@@ -29,6 +29,7 @@ public class Person {
     @Size (max = 20)
     @Past
     private LocalDate birthDate;
+    @Embedded
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> address = new ArrayList<>();
 

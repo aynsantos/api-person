@@ -13,6 +13,8 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Embeddable
 public class Address {
 
     @Id
@@ -22,6 +24,8 @@ public class Address {
     private String street;
     @NotBlank
     private String zipCode;
+    @NotBlank
+    private String number;
     @NotBlank
     private String city;
     @ManyToOne(fetch = FetchType.LAZY)
