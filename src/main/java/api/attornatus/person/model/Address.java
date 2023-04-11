@@ -1,6 +1,7 @@
 package api.attornatus.person.model;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Embeddable
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Address {
 
     @Id
@@ -28,10 +29,8 @@ public class Address {
     private String number;
     @NotBlank
     private String city;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person_id", nullable = false)
+    @ManyToOne
     private Person person;
-    @NotBlank
     private boolean main;
 
 
