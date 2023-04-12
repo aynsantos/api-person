@@ -24,10 +24,8 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
     @Size (max = 60)
     private String name;
-    @NotNull
     @Past
     private LocalDate birthDate;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -26,7 +27,7 @@ public class PersonController {
 
     @PostMapping
     @ApiOperation("Create person")
-    public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO dto) {
+    public ResponseEntity<PersonDTO> create(@Valid @RequestBody PersonDTO dto) {
         Person personCreate = personMapper.toPerson(dto);
         Person person = personService.create(personCreate);
         PersonDTO result = personMapper.toPersonDTO(person);
