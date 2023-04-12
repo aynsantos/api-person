@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "person")
 public class Person {
 
     @Id
@@ -28,7 +29,6 @@ public class Person {
     private String name;
     @NotNull
     @Past
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "person_id")

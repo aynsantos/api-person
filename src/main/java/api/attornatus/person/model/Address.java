@@ -16,6 +16,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Table(name = "address")
 public class Address {
 
     @Id
