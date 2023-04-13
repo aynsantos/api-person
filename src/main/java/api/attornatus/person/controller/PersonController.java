@@ -42,6 +42,24 @@ public class PersonController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{personId}")
+    @ApiOperation("Delete Person")
+    public ResponseEntity<Void> delete (@PathVariable Long personId) {
+        Person person = personService.findPerson(personId);
+
+        personService.delete(personId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{personId}")
+    @ApiOperation("Find Person By Id")
+    public ResponseEntity<PersonDTO> findById(@PathVariable Long personId) {
+        Person person = personService.findPerson(personId);
+
+        PersonDTO result = personMapper.toPersonDTO(person);
+        return ResponseEntity.ok(result);
+    }
+
 
 
 
