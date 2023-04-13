@@ -1,4 +1,4 @@
-package api.attornatus.person.service;
+package api.attornatus.person.controller.service;
 
 import api.attornatus.person.exception.BusinessException;
 import api.attornatus.person.model.Address;

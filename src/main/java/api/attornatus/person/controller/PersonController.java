@@ -8,7 +8,7 @@ import api.attornatus.person.mapper.AddressMapper;
 import api.attornatus.person.mapper.PersonMapper;
 import api.attornatus.person.model.Address;
 import api.attornatus.person.model.Person;
-import api.attornatus.person.service.PersonService;
+import api.attornatus.person.controller.service.PersonService;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
