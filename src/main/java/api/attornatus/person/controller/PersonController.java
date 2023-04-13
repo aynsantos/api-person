@@ -60,6 +60,16 @@ public class PersonController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/{personId}")
+    @ApiOperation("Update Person")
+    public ResponseEntity<PersonDTO> updatePerson (@PathVariable Long personId, @RequestBody PersonDTO dto) {
+        Person personUpdate = personMapper.toPerson(dto);
+        Person person = personService.update(personId, personUpdate);
+        PersonDTO result = personMapper.toPersonDTO(person);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+
 
 
 

@@ -2,10 +2,7 @@ package api.attornatus.person.model;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -17,8 +14,10 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "address")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Address {
 
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
