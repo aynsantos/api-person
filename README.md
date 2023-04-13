@@ -20,7 +20,7 @@ Listagem de todos os endereços de uma pessoa;<br>
 Criação de um novo endereço para uma pessoa;<br>
 Atualização de um endereço de uma pessoa;<br>
 Definição de um endereço como principal para uma pessoa;<br>
-Exclusão de um endereço de uma pessoa.<br>
+
 
 
 Endpoints
@@ -39,7 +39,7 @@ Formato de dados
 
 A API recebe e retorna dados em formato JSON.
 
-Exemplo de objeto Pessoa e Endereço:
+Exemplo de objeto Pessoa com o Endereço:
 ```
 {
 "id": 1,
