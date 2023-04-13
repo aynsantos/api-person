@@ -3,6 +3,7 @@ package api.attornatus.person.service;
 import api.attornatus.person.exception.BusinessException;
 import api.attornatus.person.model.Address;
 import api.attornatus.person.model.Person;
+import api.attornatus.person.repository.AddressRepository;
 import api.attornatus.person.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Objects;
 public class PersonService {
 
     private PersonRepository personRepository;
+    private AddressRepository addressRepository;
 
 
     public List<Person> findAll() {
@@ -34,6 +36,17 @@ public class PersonService {
     public Person findPerson (Long personId) {
         return personRepository.findById(personId)
                 .orElseThrow(()-> new BusinessException("Pessoa não encontrada"));
+    }
+
+    public Person addNewAddress(long id, Address createAddress) {
+        Person person = findPerson(id);
+        person.addAddress(createAddress);
+        personRepository.save(person);
+        return person;
+    }
+
+    public List<Address> findAddressByPerson(Person person){
+        return addressRepository.findByPerson(person);
     }
 
     @Transactional

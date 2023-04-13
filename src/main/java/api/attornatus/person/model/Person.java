@@ -32,5 +32,9 @@ public class Person {
     @JoinColumn(name = "person_id")
     private List<Address> address = new ArrayList<>();
 
+    public void addAddress(Address newAddress) {
+        this.address.add(newAddress);
+    }
+
 
 }

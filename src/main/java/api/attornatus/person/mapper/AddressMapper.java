@@ -16,6 +16,10 @@ public class AddressMapper {
         return modelMapper.map(address, AddressDTO.class);
     }
 
+    public Address toAddress(AddressDTO dto) {
+        return modelMapper.map(dto, Address.class);
+    }
+
 
 
 

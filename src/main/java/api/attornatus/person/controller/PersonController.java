@@ -2,8 +2,11 @@ package api.attornatus.person.controller;
 
 
 
+import api.attornatus.person.dto.AddressDTO;
 import api.attornatus.person.dto.PersonDTO;
+import api.attornatus.person.mapper.AddressMapper;
 import api.attornatus.person.mapper.PersonMapper;
+import api.attornatus.person.model.Address;
 import api.attornatus.person.model.Person;
 import api.attornatus.person.service.PersonService;
 import io.swagger.annotations.ApiOperation;
@@ -24,6 +27,8 @@ public class PersonController {
 
     private PersonMapper personMapper;
     private PersonService personService;
+
+    private AddressMapper addressMapper;
 
     @PostMapping
     @ApiOperation("Create person")
@@ -67,6 +72,25 @@ public class PersonController {
         Person person = personService.update(personId, personUpdate);
         PersonDTO result = personMapper.toPersonDTO(person);
         return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    @PatchMapping("/{personId}")
+    @ApiOperation("Create new address for a person")
+    public ResponseEntity<PersonDTO> createNewAddress(@PathVariable Long personId, @RequestBody AddressDTO addressDTO) {
+        Address addressCreate = addressMapper.toAddress(addressDTO);
+        Person address = personService.addNewAddress(personId, addressCreate);
+        PersonDTO result = personMapper.toPersonDTO(address);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+
+    }
+
+    @GetMapping("/{personId}/address")
+    @ApiOperation("Find all address by person")
+    public ResponseEntity<List<Address>> findAllAddressByPerson(@PathVariable Long personId) {
+        Person person = personService.findPerson(personId);
+        List<Address> result = personService.findAddressByPerson(person);
+        return ResponseEntity.ok(result);
+
     }
 
 

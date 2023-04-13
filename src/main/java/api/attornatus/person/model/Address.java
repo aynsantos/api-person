@@ -1,6 +1,7 @@
 package api.attornatus.person.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -30,8 +31,10 @@ public class Address {
     @NotBlank
     private String city;
     @ManyToOne
+    @JsonIgnore
     private Person person;
     private boolean main;
+
 
 
 }
